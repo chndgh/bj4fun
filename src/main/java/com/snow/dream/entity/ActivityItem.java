@@ -22,7 +22,7 @@ public class ActivityItem {
     private Integer realCount;//活动实际人数
     private Long cost;//活动费用
     private String groupId;//活动所属的组织
-    private String status; //1001，已创建，未发布； 1002，投票阶段； 1003，投票结束，未开始；1004，正在进行中；1005，结束
+    private Integer status; //1001，已创建，未发布； 1002，投票阶段； 1003，投票结束，未开始；1004，正在进行中；1005，结束
 
     public String getId() {
         return id;
@@ -120,11 +120,11 @@ public class ActivityItem {
         this.groupId = groupId;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
