@@ -10,16 +10,20 @@ import java.util.List;
  */
 public class ActivityItem {
 
-    private String id;
-    private String title;
-    private Date startTime;
-    private Date endTime;
-    private String description;
-    private User owner;
-    private List<User> voters;
-    private Integer count;
+    private String id; //活动Id
+    private String title;   //活动名称
+    private String category; //活动类别
+    private Long startTime; //活动开始时间
+    private Long endTime;//活动结束时间
+    private String description;//活动的描述
+    private String ownerUserId;//创建活动的人
+    private List<String> voters;//投票参加活动的人
+    private Integer maxCount; //活动最多人数
+    private Integer realCount;//活动实际人数
+    private Long cost;//活动费用
+    private String groupId;//活动所属的组织
+    private String status; //1001，已创建，未发布； 1002，投票阶段； 1003，投票结束，未开始；1004，正在进行中；1005，结束
 
-    @Id
     public String getId() {
         return id;
     }
@@ -36,19 +40,27 @@ public class ActivityItem {
         this.title = title;
     }
 
-    public Date getStartTime() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 
@@ -60,41 +72,59 @@ public class ActivityItem {
         this.description = description;
     }
 
-    public User getOwner() {
-        return owner;
+    public String getOwnerUserId() {
+        return ownerUserId;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerUserId(String ownerUserId) {
+        this.ownerUserId = ownerUserId;
     }
 
-    public List<User> getVoters() {
+    public List<String> getVoters() {
         return voters;
     }
 
-    public void setVoters(List<User> voters) {
+    public void setVoters(List<String> voters) {
         this.voters = voters;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getMaxCount() {
+        return maxCount;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setMaxCount(Integer maxCount) {
+        this.maxCount = maxCount;
     }
 
-    @Override
-    public String toString() {
-        return "ActivityItem{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", description='" + description + '\'' +
-                ", owner=" + owner +
-                ", voters=" + voters +
-                ", count=" + count +
-                '}';
+    public Integer getRealCount() {
+        return realCount;
+    }
+
+    public void setRealCount(Integer realCount) {
+        this.realCount = realCount;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

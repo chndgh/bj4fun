@@ -17,10 +17,15 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public ServerResponse createActivity(ActivityItem activityItem) {
+
         ActivityItem item  = activityItemRepository.save(activityItem);
         if (item != null){
             return ServerResponse.createBySuccess(item);
         }
         return ServerResponse.createByErrorMessage("创建活动失败");
+    }
+
+    public ServerResponse getActivityItemByCategory(String category) {
+                return null;
     }
 }

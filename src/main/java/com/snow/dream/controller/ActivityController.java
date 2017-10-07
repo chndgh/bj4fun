@@ -20,6 +20,11 @@ public class ActivityController {
     @ResponseBody
     public ServerResponse createActivity(@RequestBody ActivityItem activityItem){
         System.out.println(activityItem);
+        if (activityItem.getStartTime()==null){
+            return ServerResponse.createByErrorMessage("请输入活动开始时间");
+        }else if (activityItem.getCategory()==null){
+            return ServerResponse.createByErrorMessage("请输入活动类别");
+        }
         return activityService.createActivity(activityItem);
     }
 
