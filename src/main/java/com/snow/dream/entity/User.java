@@ -1,15 +1,18 @@
 package com.snow.dream.entity;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by dghcch on 2017/9/27.
  */
 public class User {
-    private String id;
     private String openId;
+    private String subOpenId;//openId 的前8位，用于搜索用户
     private String username;
-    private String gender;
+    private Integer gender;
     private String nickName;
     private String country;
     private String province;
@@ -20,14 +23,10 @@ public class User {
     private String groupId;
     private List<String> activities; //用户参加过的活动
     private String jsCode; //登录时返回的code
+    private Long firstLoginTime;
+    private Long registerTime;
+    private Long latestLoginTime;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getOpenId() {
         return openId;
@@ -37,11 +36,20 @@ public class User {
         this.openId = openId;
     }
 
-    public String getGender() {
+    @Id
+    public String getSubOpenId() {
+        return subOpenId;
+    }
+
+    public void setSubOpenId(String subOpenId) {
+        this.subOpenId = subOpenId;
+    }
+
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -133,23 +141,27 @@ public class User {
         this.jsCode = jsCode;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", openId='" + openId + '\'' +
-                ", username='" + username + '\'' +
-                ", gender='" + gender + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", country='" + country + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", language='" + language + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                ", role=" + role +
-                ", groupId='" + groupId + '\'' +
-                ", activities=" + activities +
-                ", jsCode='" + jsCode + '\'' +
-                '}';
+    public Long getFirstLoginTime() {
+        return firstLoginTime;
+    }
+
+    public void setFirstLoginTime(Long firstLoginTime) {
+        this.firstLoginTime = firstLoginTime;
+    }
+
+    public Long getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Long registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public Long getLatestLoginTime() {
+        return latestLoginTime;
+    }
+
+    public void setLatestLoginTime(Long latestLoginTime) {
+        this.latestLoginTime = latestLoginTime;
     }
 }

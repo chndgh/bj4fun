@@ -1,5 +1,6 @@
 package com.snow.dream.service;
 
+import com.snow.dream.entity.User;
 import com.snow.dream.utils.ServerResponse;
 
 /**
@@ -7,5 +8,5 @@ import com.snow.dream.utils.ServerResponse;
  */
 public interface UserService {
 
-    ServerResponse login(String code);
+    ServerResponse login(User user);
 }

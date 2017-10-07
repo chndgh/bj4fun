@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by edward on 17/10/5.
@@ -42,21 +43,31 @@ public class UserServiceImpl implements UserService{
     @Value("${wechat.app.url}")
     String url;
 
-    public ServerResponse login(String code){
-        String openId = retrieveOpenId(code);
+    public ServerResponse login(User user){
+        String openId = retrieveOpenId(user.getJsCode());
+        String subOpenId;
         if (openId!=null && !"".equals(openId))
         {
-            if (checkUserByOpenId(openId)){
-                return ServerResponse.createBySuccess();
+            subOpenId = openId.substring(0,7);
+            User dbUser = findUserBySubOpenId(subOpenId);
+            if (dbUser!=null){
+                dbUser.setLatestLoginTime(new Date().getTime());
+                userRepository.save(dbUser);
+                return ServerResponse.createBySuccess("欢迎老用户",dbUser);
             }else{
-
+                user.setOpenId(openId);
+                user.setSubOpenId(subOpenId);
+                User firstLoginUser = createUser(user);
+                return ServerResponse.createBySuccess("第一次登陆的用户",firstLoginUser);
             }
         }
         return ServerResponse.createByErrorMessage("无法获取用户的openId");
     }
 
-    private User createUser(){
-            return null;
+    private User createUser(User user){
+        user.setFirstLoginTime(new Date().getTime());
+        User item = userRepository.save(user);
+        return item;
     }
 
 
@@ -85,13 +96,11 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    private boolean checkUserByOpenId(String openId){
-        User user = userRepository.findOne(openId);
+    private User findUserBySubOpenId(String subOpenId){
+        User user = userRepository.findOne(subOpenId);
         if (user !=null){
-            return true;
+            return user;
         }
-        return false;
-
-
+        return null;
     }
 }
