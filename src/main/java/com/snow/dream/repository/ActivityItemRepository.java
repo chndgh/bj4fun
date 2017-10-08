@@ -20,6 +20,9 @@ public interface ActivityItemRepository extends MongoRepository<ActivityItem,Int
 
     List<ActivityItem> findByStatusAndVoters(Integer status, String userId);
 
+    @Query("{'ownerUserId':{$ne:?0},'status':{$in:?1}}")
+    List<ActivityItem> findAvailableActivities(String userId,List<Integer> status);
+
 
     @Query("{'startTime':{$lte:?0},'endTime':{$gte:?0},voters:{$in:?1}}" )
     List<ActivityItem> findAllActiveActivity(Long time, String userId);

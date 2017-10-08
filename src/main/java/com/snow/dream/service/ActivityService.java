@@ -16,4 +16,5 @@ public interface ActivityService {
     ServerResponse getActivityByStatusAndVoter(Integer status, String userId);
 
     ServerResponse getOwnActivity(User user);
+    ServerResponse getAvailableActivity(User user);
 }

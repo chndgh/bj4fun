@@ -2,14 +2,12 @@ package com.snow.dream.controller;
 
 import com.snow.dream.entity.ActivityItem;
 import com.snow.dream.entity.User;
+import com.snow.dream.repository.UserRepository;
 import com.snow.dream.service.ActivityService;
-import com.snow.dream.utils.Const;
-import com.snow.dream.utils.ResponseCode;
 import com.snow.dream.utils.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by dghcch on 2017/9/27.
@@ -20,13 +18,16 @@ public class ActivityController {
     @Autowired
     ActivityService activityService;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @PostMapping("/create")
     @ResponseBody
-    public ServerResponse createActivity(HttpSession session, @RequestBody ActivityItem activityItem){
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
+    public ServerResponse createActivity(@RequestHeader("userId") String userId,@RequestBody ActivityItem activityItem){
+        User user= userRepository.findOne(userId);
         if (user==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
         return activityService.createActivity(activityItem,user);
     }
@@ -34,20 +35,32 @@ public class ActivityController {
 
     @GetMapping("/{status}/status")
     @ResponseBody
-    public ServerResponse getStatusActivity(HttpSession session,@PathVariable Integer status){
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+    public ServerResponse getStatusActivity(@RequestHeader("userId") String userId,@PathVariable Integer status){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
         return activityService.getActivityByStatusAndVoter(status,user.getSubOpenId());
     }
 
+
+    @GetMapping("/availableActivity")
+    @ResponseBody
+    public ServerResponse getAvailableActivity(@RequestHeader("userId") String userId){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.getAvailableActivity(user);
+    }
+
+
     @GetMapping("/own")
     @ResponseBody
-    public ServerResponse getOwnActivity(HttpSession session){
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+    public ServerResponse getOwnActivity(@RequestHeader("userId") String userId){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
         return activityService.getOwnActivity(user);
     }
