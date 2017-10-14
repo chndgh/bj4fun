@@ -65,6 +65,16 @@ public class ActivityController {
         return activityService.getOwnActivity(user);
     }
 
+    @GetMapping("/{id}/detail")
+    public ServerResponse getActivityDetail(@RequestHeader("userId") String userId, @PathVariable String id){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.getActivityById(id);
+    }
+
+
     @GetMapping("test")
     public ServerResponse test(){
         return ServerResponse.createBySuccess("hello");

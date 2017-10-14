@@ -17,4 +17,6 @@ public interface ActivityService {
 
     ServerResponse getOwnActivity(User user);
     ServerResponse getAvailableActivity(User user);
+
+    ServerResponse getActivityById(String id);
 }

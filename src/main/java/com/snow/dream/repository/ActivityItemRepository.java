@@ -18,6 +18,8 @@ public interface ActivityItemRepository extends MongoRepository<ActivityItem,Int
 
     List<ActivityItem> findByOwnerUserId(String ownerUserId);
 
+    ActivityItem findById(String id);
+
     List<ActivityItem> findByStatusAndVoters(Integer status, String userId);
 
     @Query("{'ownerUserId':{$ne:?0},'status':{$in:?1}}")

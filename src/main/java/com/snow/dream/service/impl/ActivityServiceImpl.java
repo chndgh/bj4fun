@@ -66,6 +66,14 @@ public class ActivityServiceImpl implements ActivityService {
         return ServerResponse.createBySuccessMessage("暂时没有创建活动。");
     }
 
+    public ServerResponse getActivityById(String id){
+        ActivityItem activityItem = activityItemRepository.findById(id);
+        if (activityItem != null){
+            return ServerResponse.createBySuccess(activityItem);
+        }
+        return ServerResponse.createByErrorMessage("未查到活动");
+    }
+
     public ServerResponse getActivityItemByCategory(String category) {
                 return null;
     }
