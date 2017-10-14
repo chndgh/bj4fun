@@ -13,10 +13,11 @@ public class ActivityItem {
 
     private String id; //活动Id
     private String title;   //活动名称
-    private String category; //活动类别
+    private Integer category; //活动类别
     private Long createTime; //活动创建时间
     private Long startTime; //活动开始时间
     private Long endTime;//活动结束时间
+    private String address; //活动地点
     private String description;//活动的描述
     private String ownerUserId;//创建活动的人
     private List<String> voters;//投票参加活动的人
@@ -48,11 +49,11 @@ public class ActivityItem {
         this.title = title;
     }
 
-    public String getCategory() {
+    public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Integer category) {
         this.category = category;
     }
 
@@ -94,6 +95,14 @@ public class ActivityItem {
 
     public void setOwnerUserId(String ownerUserId) {
         this.ownerUserId = ownerUserId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public List<String> getVoters() {
