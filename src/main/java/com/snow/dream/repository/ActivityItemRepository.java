@@ -14,24 +14,13 @@ import java.util.List;
 @Repository
 public interface ActivityItemRepository extends MongoRepository<ActivityItem,Integer> {
 
-    List<ActivityItem> findByCategoryAndVotersIn(String category, List<String> userIds);
-
     List<ActivityItem> findByOwnerUserId(String ownerUserId);
 
     ActivityItem findById(String id);
 
-    List<ActivityItem> findByStatusAndVoters(Integer status, String userId);
+    List<ActivityItem> findByStatusInAndVoters(List<Integer> status, String userId);
 
-    @Query("{'ownerUserId':{$ne:?0},'status':{$in:?1}}")
+    @Query("{'ownerUserId':{$ne:?0},'isOpen':1,'status':{$in:?1}}")
     List<ActivityItem> findAvailableActivities(String userId,List<Integer> status);
-
-
-    @Query("{'startTime':{$lte:?0},'endTime':{$gte:?0},voters:{$in:?1}}" )
-    List<ActivityItem> findAllActiveActivity(Long time, String userId);
-
-    @Query("{'endTime':{$lte:?0},voters:{$in:?1}}")
-    List<ActivityItem> findAllInActiveActivity(Long time, String userId);
-
-
 
 }

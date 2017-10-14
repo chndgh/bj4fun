@@ -8,6 +8,8 @@ import com.snow.dream.utils.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 /**
  * Created by dghcch on 2017/9/27.
@@ -33,9 +35,9 @@ public class ActivityController {
     }
 
 
-    @GetMapping("/{status}/status")
+    @PostMapping("/status")
     @ResponseBody
-    public ServerResponse getStatusActivity(@RequestHeader("userId") String userId,@PathVariable Integer status){
+    public ServerResponse getActivityByStatus(@RequestHeader("userId") String userId, @RequestBody List<Integer> status){
         User user= userRepository.findOne(userId);
         if (user==null){
             return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
@@ -44,7 +46,7 @@ public class ActivityController {
     }
 
 
-    @GetMapping("/availableActivity")
+    @GetMapping("/available")
     @ResponseBody
     public ServerResponse getAvailableActivity(@RequestHeader("userId") String userId){
         User user= userRepository.findOne(userId);
@@ -53,6 +55,7 @@ public class ActivityController {
         }
         return activityService.getAvailableActivity(user);
     }
+
 
 
     @GetMapping("/own")

@@ -60,6 +60,7 @@ public class Bj4funApplicationTests {
 		activityItem.setTitle("足球");
 		activityItem.setDescription("一起踢足球");
 		activityItem.setOwnerUserId("1000002");
+		activityItem.setIsOpen(1);
 		activityItem.setCreateTime(new Date().getTime());
 		activityItem.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem.setStatus(1002);
@@ -70,6 +71,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem1 = new ActivityItem();
 		activityItem1.setId(getNowDate()+1);
 		activityItem1.setTitle("足球");
+		activityItem1.setIsOpen(1);
 		activityItem1.setDescription("一起踢足球");
 		activityItem1.setOwnerUserId("1000001");
 		activityItem1.setCreateTime(new Date().getTime());
@@ -80,6 +82,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem2 = new ActivityItem();
 		activityItem2.setId(getNowDate()+2);
 		activityItem2.setTitle("足球");
+		activityItem2.setIsOpen(1);
 		activityItem2.setDescription("一起踢足球");
 		activityItem2.setOwnerUserId("1000002");
 		activityItem2.setCreateTime(new Date().getTime());
@@ -90,6 +93,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem3 = new ActivityItem();
 		activityItem3.setId(getNowDate()+3);
 		activityItem3.setTitle("足球");
+		activityItem3.setIsOpen(1);
 		activityItem3.setDescription("一起踢足球");
 		activityItem3.setOwnerUserId("1000002");
 		activityItem3.setCreateTime(new Date().getTime());
@@ -100,6 +104,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem4 = new ActivityItem();
 		activityItem4.setId(getNowDate()+4);
 		activityItem4.setTitle("篮球");
+		activityItem4.setIsOpen(1);
 		activityItem4.setDescription("一起打篮球");
 		activityItem4.setOwnerUserId("1000002");
 		activityItem4.setCreateTime(new Date().getTime());
@@ -110,6 +115,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem5 = new ActivityItem();
 		activityItem5.setId(getNowDate()+5);
 		activityItem5.setTitle("篮球");
+		activityItem5.setIsOpen(1);
 		activityItem5.setDescription("一起打篮球");
 		activityItem5.setOwnerUserId("1000002");
 		activityItem5.setCreateTime(new Date().getTime());
@@ -121,6 +127,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem6 = new ActivityItem();
 		activityItem6.setId(getNowDate()+6);
 		activityItem6.setTitle("篮球");
+		activityItem6.setIsOpen(1);
 		activityItem6.setDescription("一起打篮球");
 		activityItem6.setOwnerUserId("1000002");
 		activityItem6.setCreateTime(new Date().getTime());
@@ -132,6 +139,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem7 = new ActivityItem();
 		activityItem7.setId(getNowDate()+7);
 		activityItem7.setTitle("篮球");
+		activityItem7.setIsOpen(1);
 		activityItem7.setDescription("一起打篮球");
 		activityItem7.setOwnerUserId("1000002");
 		activityItem7.setCreateTime(new Date().getTime());
@@ -143,6 +151,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem8 = new ActivityItem();
 		activityItem8.setId(getNowDate()+8);
 		activityItem8.setTitle("篮球");
+		activityItem8.setIsOpen(1);
 		activityItem8.setDescription("一起打篮球");
 		activityItem8.setOwnerUserId("1000002");
 		activityItem8.setCreateTime(new Date().getTime());
@@ -155,6 +164,7 @@ public class Bj4funApplicationTests {
 		activityItem9.setId(getNowDate()+9);
 		activityItem9.setTitle("篮球");
 		activityItem9.setDescription("一起打篮球");
+		activityItem9.setIsOpen(1);
 		activityItem9.setOwnerUserId("1000002");
 		activityItem9.setCreateTime(new Date().getTime());
 		activityItem9.setVoters(Arrays.asList("1000000","1000001"));
@@ -165,6 +175,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem10 = new ActivityItem();
 		activityItem10.setId(getNowDate()+10);
 		activityItem10.setTitle("篮球");
+		activityItem10.setIsOpen(1);
 		activityItem10.setDescription("一起打篮球");
 		activityItem10.setOwnerUserId("1000002");
 		activityItem10.setCreateTime(new Date().getTime());
@@ -175,6 +186,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem11 = new ActivityItem();
 		activityItem11.setId(getNowDate()+11);
 		activityItem11.setTitle("篮球");
+		activityItem11.setIsOpen(0);
 		activityItem11.setDescription("一起打篮球");
 		activityItem11.setOwnerUserId("1000002");
 		activityItem11.setCreateTime(new Date().getTime());
@@ -185,6 +197,7 @@ public class Bj4funApplicationTests {
 		ActivityItem activityItem12 = new ActivityItem();
 		activityItem12.setId(getNowDate()+12);
 		activityItem12.setOwnerUserId("1000002");
+		activityItem12.setIsOpen(1);
 		activityItem12.setCreateTime(new Date().getTime());
 		activityItem12.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem12.setStatus(1002);
@@ -192,6 +205,7 @@ public class Bj4funApplicationTests {
 
 		ActivityItem activityItem13 = new ActivityItem();
 		activityItem13.setId(getNowDate()+13);
+		activityItem13.setIsOpen(1);
 		activityItem13.setOwnerUserId("oAqAC0S");
 		activityItem13.setCreateTime(new Date().getTime());
 		activityItem13.setVoters(Arrays.asList("1000000","1000001","1000002"));

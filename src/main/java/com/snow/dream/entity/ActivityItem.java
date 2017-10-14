@@ -22,6 +22,7 @@ public class ActivityItem {
     private List<String> voters;//投票参加活动的人
     private Integer maxCount; //活动最多人数
     private Integer realCount;//活动实际人数
+    private Integer isOpen; //是否公开活动
     private Long cost;//人均费用
     private String groupId;//活动所属的组织
     private Integer status; //1001，已创建，未发布； 1002，投票阶段； 1003，投票结束，未开始；1004，正在进行中；1005，结束
@@ -125,6 +126,14 @@ public class ActivityItem {
 
     public void setCost(Long cost) {
         this.cost = cost;
+    }
+
+    public Integer getIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(Integer isOpen) {
+        this.isOpen = isOpen;
     }
 
     public String getGroupId() {

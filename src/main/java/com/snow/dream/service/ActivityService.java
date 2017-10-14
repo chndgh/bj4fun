@@ -5,6 +5,7 @@ import com.snow.dream.entity.User;
 import com.snow.dream.utils.ServerResponse;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by dghcch on 2017/9/27.
@@ -13,9 +14,10 @@ public interface ActivityService {
 
     ServerResponse createActivity(ActivityItem activityItem, User user);
 
-    ServerResponse getActivityByStatusAndVoter(Integer status, String userId);
+    ServerResponse getActivityByStatusAndVoter(List<Integer> status, String userId);
 
     ServerResponse getOwnActivity(User user);
+
     ServerResponse getAvailableActivity(User user);
 
     ServerResponse getActivityById(String id);

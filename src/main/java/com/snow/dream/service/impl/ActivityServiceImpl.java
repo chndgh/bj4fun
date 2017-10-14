@@ -50,12 +50,12 @@ public class ActivityServiceImpl implements ActivityService {
         return ServerResponse.createBySuccessMessage("暂时没有可以参加的活动");
     }
 
-    public ServerResponse getActivityByStatusAndVoter(Integer status, String userId){
-        List<ActivityItem> activityItems = activityItemRepository.findByStatusAndVoters(status,userId);
+    public ServerResponse getActivityByStatusAndVoter(List<Integer> status, String userId){
+        List<ActivityItem> activityItems = activityItemRepository.findByStatusInAndVoters(status,userId);
         if (activityItems!=null){
             return ServerResponse.createBySuccess(activityItems);
         }
-        return ServerResponse.createBySuccessMessage("暂时没有"+ActivityStatus.codeOf(status).getValue()+"活动。");
+        return ServerResponse.createBySuccessMessage("暂时没有活动。");
     }
 
     public ServerResponse getOwnActivity(User user){
