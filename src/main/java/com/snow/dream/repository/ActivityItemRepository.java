@@ -14,13 +14,15 @@ import java.util.List;
 @Repository
 public interface ActivityItemRepository extends MongoRepository<ActivityItem,Integer> {
 
+    @Query("{'ownerUser._id':?0}")
     List<ActivityItem> findByOwnerUserId(String ownerUserId);
 
     ActivityItem findById(String id);
 
+    @Query("{'status':{$in:?0},'voters._id':?1}")
     List<ActivityItem> findByStatusInAndVoters(List<Integer> status, String userId);
 
-    @Query("{'ownerUserId':{$ne:?0},'isOpen':1,'status':{$in:?1}}")
+    @Query("{'ownerUser._id':{$ne:?0},'voters._id':{$ne:?0},'isOpen':1,'status':{$in:?1}}")
     List<ActivityItem> findAvailableActivities(String userId,List<Integer> status);
 
 }

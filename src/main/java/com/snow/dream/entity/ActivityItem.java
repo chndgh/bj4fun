@@ -19,8 +19,8 @@ public class ActivityItem {
     private Long endTime;//活动结束时间
     private String address; //活动地点
     private String description;//活动的描述
-    private String ownerUserId;//创建活动的人
-    private List<String> voters;//投票参加活动的人
+    private User ownerUser;//创建活动的人
+    private List<User> voters;//投票参加活动的人
     private Integer maxCount; //活动最多人数
     private Integer realCount;//活动实际人数
     private Integer isOpen; //是否公开活动
@@ -89,12 +89,12 @@ public class ActivityItem {
         this.description = description;
     }
 
-    public String getOwnerUserId() {
-        return ownerUserId;
+    public User getOwnerUser() {
+        return ownerUser;
     }
 
-    public void setOwnerUserId(String ownerUserId) {
-        this.ownerUserId = ownerUserId;
+    public void setOwnerUser(User ownerUser) {
+        this.ownerUser = ownerUser;
     }
 
     public String getAddress() {
@@ -105,11 +105,11 @@ public class ActivityItem {
         this.address = address;
     }
 
-    public List<String> getVoters() {
+    public List<User> getVoters() {
         return voters;
     }
 
-    public void setVoters(List<String> voters) {
+    public void setVoters(List<User> voters) {
         this.voters = voters;
     }
 

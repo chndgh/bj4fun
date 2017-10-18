@@ -21,4 +21,6 @@ public interface ActivityService {
     ServerResponse getAvailableActivity(User user);
 
     ServerResponse getActivityById(String id);
+
+    ServerResponse voteOnActivity(String userId,String activityId);
 }

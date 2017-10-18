@@ -77,6 +77,15 @@ public class ActivityController {
         return activityService.getActivityById(id);
     }
 
+    @PostMapping("/vote")
+    public ServerResponse voteOnActivity(@RequestHeader("userId") String userId,@RequestBody String activityId){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.voteOnActivity(userId, activityId);
+    }
+
 
     @GetMapping("test")
     public ServerResponse test(){

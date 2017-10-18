@@ -59,10 +59,9 @@ public class Bj4funApplicationTests {
 		activityItem.setId(getNowDate());
 		activityItem.setTitle("足球");
 		activityItem.setDescription("一起踢足球");
-		activityItem.setOwnerUserId("1000002");
+//		activityItem.setOwnerUserId("1000002");
 		activityItem.setIsOpen(1);
 		activityItem.setCreateTime(new Date().getTime());
-		activityItem.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem.setStatus(1002);
 		activityItemRepository.save(activityItem);
 
@@ -73,9 +72,8 @@ public class Bj4funApplicationTests {
 		activityItem1.setTitle("足球");
 		activityItem1.setIsOpen(1);
 		activityItem1.setDescription("一起踢足球");
-		activityItem1.setOwnerUserId("1000001");
+//		activityItem1.setOwnerUserId("1000001");
 		activityItem1.setCreateTime(new Date().getTime());
-		activityItem1.setVoters(Arrays.asList("1000002","1000001","oAqAC0S"));
 		activityItem1.setStatus(1002);
 		activityItemRepository.save(activityItem1);
 
@@ -84,9 +82,8 @@ public class Bj4funApplicationTests {
 		activityItem2.setTitle("足球");
 		activityItem2.setIsOpen(1);
 		activityItem2.setDescription("一起踢足球");
-		activityItem2.setOwnerUserId("1000002");
+//		activityItem2.setOwnerUserId("1000002");
 		activityItem2.setCreateTime(new Date().getTime());
-		activityItem2.setVoters(Arrays.asList("1000000","1000001","oAqAC0S"));
 		activityItem2.setStatus(1002);
 		activityItemRepository.save(activityItem2);
 
@@ -95,9 +92,9 @@ public class Bj4funApplicationTests {
 		activityItem3.setTitle("足球");
 		activityItem3.setIsOpen(1);
 		activityItem3.setDescription("一起踢足球");
-		activityItem3.setOwnerUserId("1000002");
+//		activityItem3.setOwnerUserId("1000002");
 		activityItem3.setCreateTime(new Date().getTime());
-		activityItem3.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem3.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem3.setStatus(1002);
 		activityItemRepository.save(activityItem3);
 
@@ -106,9 +103,9 @@ public class Bj4funApplicationTests {
 		activityItem4.setTitle("篮球");
 		activityItem4.setIsOpen(1);
 		activityItem4.setDescription("一起打篮球");
-		activityItem4.setOwnerUserId("1000002");
+//		activityItem4.setOwnerUserId("1000002");
 		activityItem4.setCreateTime(new Date().getTime());
-		activityItem4.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem4.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem4.setStatus(1002);
 		activityItemRepository.save(activityItem4);
 
@@ -117,9 +114,9 @@ public class Bj4funApplicationTests {
 		activityItem5.setTitle("篮球");
 		activityItem5.setIsOpen(1);
 		activityItem5.setDescription("一起打篮球");
-		activityItem5.setOwnerUserId("1000002");
+//		activityItem5.setOwnerUserId("1000002");
 		activityItem5.setCreateTime(new Date().getTime());
-		activityItem5.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem5.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem5.setStatus(1002);
 		activityItemRepository.save(activityItem5);
 
@@ -129,9 +126,9 @@ public class Bj4funApplicationTests {
 		activityItem6.setTitle("篮球");
 		activityItem6.setIsOpen(1);
 		activityItem6.setDescription("一起打篮球");
-		activityItem6.setOwnerUserId("1000002");
+//		activityItem6.setOwnerUserId("1000002");
 		activityItem6.setCreateTime(new Date().getTime());
-		activityItem6.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem6.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem6.setStatus(1002);
 		activityItemRepository.save(activityItem6);
 
@@ -141,9 +138,9 @@ public class Bj4funApplicationTests {
 		activityItem7.setTitle("篮球");
 		activityItem7.setIsOpen(1);
 		activityItem7.setDescription("一起打篮球");
-		activityItem7.setOwnerUserId("1000002");
+//		activityItem7.setOwnerUserId("1000002");
 		activityItem7.setCreateTime(new Date().getTime());
-		activityItem7.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem7.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem7.setStatus(1002);
 		activityItemRepository.save(activityItem7);
 
@@ -153,9 +150,9 @@ public class Bj4funApplicationTests {
 		activityItem8.setTitle("篮球");
 		activityItem8.setIsOpen(1);
 		activityItem8.setDescription("一起打篮球");
-		activityItem8.setOwnerUserId("1000002");
+//		activityItem8.setOwnerUserId("1000002");
 		activityItem8.setCreateTime(new Date().getTime());
-		activityItem8.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem8.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem8.setStatus(1002);
 		activityItemRepository.save(activityItem8);
 
@@ -165,9 +162,9 @@ public class Bj4funApplicationTests {
 		activityItem9.setTitle("篮球");
 		activityItem9.setDescription("一起打篮球");
 		activityItem9.setIsOpen(1);
-		activityItem9.setOwnerUserId("1000002");
+//		activityItem9.setOwnerUserId("1000002");
 		activityItem9.setCreateTime(new Date().getTime());
-		activityItem9.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem9.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem9.setStatus(1002);
 		activityItemRepository.save(activityItem9);
 
@@ -177,9 +174,9 @@ public class Bj4funApplicationTests {
 		activityItem10.setTitle("篮球");
 		activityItem10.setIsOpen(1);
 		activityItem10.setDescription("一起打篮球");
-		activityItem10.setOwnerUserId("1000002");
+//		activityItem10.setOwnerUserId("1000002");
 		activityItem10.setCreateTime(new Date().getTime());
-		activityItem10.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem10.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem10.setStatus(1002);
 		activityItemRepository.save(activityItem10);
 
@@ -188,27 +185,27 @@ public class Bj4funApplicationTests {
 		activityItem11.setTitle("篮球");
 		activityItem11.setIsOpen(0);
 		activityItem11.setDescription("一起打篮球");
-		activityItem11.setOwnerUserId("1000002");
+//		activityItem11.setOwnerUserId("1000002");
 		activityItem11.setCreateTime(new Date().getTime());
-		activityItem11.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem11.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem11.setStatus(1002);
 		activityItemRepository.save(activityItem11);
 
 		ActivityItem activityItem12 = new ActivityItem();
 		activityItem12.setId(getNowDate()+12);
-		activityItem12.setOwnerUserId("1000002");
+//		activityItem12.setOwnerUserId("1000002");
 		activityItem12.setIsOpen(1);
 		activityItem12.setCreateTime(new Date().getTime());
-		activityItem12.setVoters(Arrays.asList("1000000","1000001"));
+//		activityItem12.setVoters(Arrays.asList("1000000","1000001"));
 		activityItem12.setStatus(1002);
 		activityItemRepository.save(activityItem12);
 
 		ActivityItem activityItem13 = new ActivityItem();
 		activityItem13.setId(getNowDate()+13);
 		activityItem13.setIsOpen(1);
-		activityItem13.setOwnerUserId("oAqAC0S");
+//		activityItem13.setOwnerUserId("oAqAC0S");
 		activityItem13.setCreateTime(new Date().getTime());
-		activityItem13.setVoters(Arrays.asList("1000000","1000001","1000002"));
+//		activityItem13.setVoters(Arrays.asList("1000000","1000001","1000002"));
 		activityItem13.setStatus(1002);
 		activityItemRepository.save(activityItem13);
 

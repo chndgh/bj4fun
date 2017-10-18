@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by dghcch on 2017/9/27.
@@ -30,9 +29,10 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public ServerResponse createActivity(ActivityItem activityItem, User user) {
+            activityItem.setId(UUID.randomUUID().toString().substring(0,7));
             activityItem.setCreateTime(new Date().getTime());
             activityItem.setStatus(ActivityStatus.CREATED.getCode());
-            activityItem.setOwnerUserId(user.getSubOpenId());
+            activityItem.setOwnerUser(user);
             ActivityItem item  = activityItemRepository.save(activityItem);
             if (item != null){
                 return ServerResponse.createBySuccess(item);
@@ -72,6 +72,32 @@ public class ActivityServiceImpl implements ActivityService {
             return ServerResponse.createBySuccess(activityItem);
         }
         return ServerResponse.createByErrorMessage("未查到活动");
+    }
+
+    public ServerResponse voteOnActivity(String userId,String activityId){
+        ActivityItem activityItem = activityItemRepository.findById(activityId);
+        List<User> voters = activityItem.getVoters();
+        User user = userRepository.findOne(userId);
+        if (voters==null){
+            List<User> users = new ArrayList<>();
+            users.add(user);
+            activityItem.setVoters(users);
+            activityItem.setRealCount(1);
+            ActivityItem reActivityItem = activityItemRepository.save(activityItem);
+            return ServerResponse.createBySuccess("报名成功",reActivityItem);
+        }else {
+            if (voters.size() == activityItem.getMaxCount()){
+                ServerResponse.createByErrorMessage("报名人数已满！");
+            }
+            for (User voter:voters){
+                if (voter.getSubOpenId().equals(userId)){
+                    return ServerResponse.createByErrorMessage("您已经报过名了...");
+                }
+            }
+            activityItem.setRealCount(activityItem.getRealCount()+1);
+            activityItem.getVoters().add(user);
+            return ServerResponse.createBySuccess("报名成功",activityItemRepository.save(activityItem));
+        }
     }
 
     public ServerResponse getActivityItemByCategory(String category) {
