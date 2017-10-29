@@ -1,20 +1,25 @@
 package com.snow.dream;
 
-import com.google.common.base.Strings;
 import com.snow.dream.entity.ActivityItem;
 import com.snow.dream.entity.User;
 import com.snow.dream.repository.ActivityItemRepository;
 import com.snow.dream.repository.UserRepository;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -223,5 +228,7 @@ public class Bj4funApplicationTests {
 		String now = year + month+date+hour+min+second;
 		return now;
 	}
+
+
 
 }

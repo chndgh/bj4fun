@@ -35,37 +35,75 @@ public class ActivityController {
     }
 
 
-    @PostMapping("/status")
+    @PostMapping("/status/{sortField}/sort")
     @ResponseBody
-    public ServerResponse getActivityByStatus(@RequestHeader("userId") String userId, @RequestBody List<Integer> status){
+    public ServerResponse getActivityByStatus(@RequestHeader("userId") String userId,
+                                              @RequestBody List<Integer> status,
+                                              @PathVariable String sortField){
         User user= userRepository.findOne(userId);
         if (user==null){
             return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
-        return activityService.getActivityByStatusAndVoter(status,user.getSubOpenId());
+        return activityService.getActivityByStatusAndVoter(status,user.getSubOpenId(),sortField);
+    }
+
+    @PostMapping("/status/{category}/category/{sortField}/sort")
+    @ResponseBody
+    public ServerResponse getActivityByStatusAndCategory(@RequestHeader("userId") String userId,
+                                                         @RequestBody List<Integer> status,
+                                                         @PathVariable String sortField,
+                                                         @PathVariable int category){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.getActivityByStatusAndVoterAndCategory(status,userId,category,sortField);
     }
 
 
-    @GetMapping("/available")
+    @GetMapping("/available/{sortField}/sort")
     @ResponseBody
-    public ServerResponse getAvailableActivity(@RequestHeader("userId") String userId){
+    public ServerResponse getAvailableActivity(@RequestHeader("userId") String userId,@PathVariable String sortField){
         User user= userRepository.findOne(userId);
         if (user==null){
             return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
-        return activityService.getAvailableActivity(user);
+        return activityService.getAvailableActivity(user,sortField);
+    }
+
+    @GetMapping("/available/{category}/category/{sortField}/sort")
+    public ServerResponse getAvailableCategoryActivity(@RequestHeader("userId") String userId,
+                                                       @PathVariable Integer category,
+                                                       @PathVariable String sortField){
+        User user = userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.getAvailableCategoryActivity(user,category,sortField);
     }
 
 
 
-    @GetMapping("/own")
+    @GetMapping("/own/{sortField}/sort")
     @ResponseBody
-    public ServerResponse getOwnActivity(@RequestHeader("userId") String userId){
+    public ServerResponse getOwnActivity(@RequestHeader("userId") String userId,@PathVariable String sortField){
         User user= userRepository.findOne(userId);
         if (user==null){
             return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
-        return activityService.getOwnActivity(user);
+        return activityService.getOwnActivity(user,sortField);
+    }
+
+    @GetMapping("/own/{category}/category/{sortField}/sort")
+    @ResponseBody
+    public ServerResponse getOwnActivity(@RequestHeader("userId") String userId,
+                                         @PathVariable Integer category,
+                                         @PathVariable String sortField){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.getOwnActivityByCategory(user,category,sortField);
     }
 
     @GetMapping("/{id}/detail")
@@ -84,6 +122,15 @@ public class ActivityController {
             return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
         }
         return activityService.voteOnActivity(userId, activityId);
+    }
+
+    @DeleteMapping("{id}/delete")
+    public ServerResponse deleteActivityById(@RequestHeader("userId") String userId,@PathVariable String id){
+        User user= userRepository.findOne(userId);
+        if (user==null){
+            return ServerResponse.createByErrorMessage("非法请求，请重新登陆");
+        }
+        return activityService.deleteActivityById(user,id);
     }
 
 

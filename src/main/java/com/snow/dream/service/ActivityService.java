@@ -14,13 +14,21 @@ public interface ActivityService {
 
     ServerResponse createActivity(ActivityItem activityItem, User user);
 
-    ServerResponse getActivityByStatusAndVoter(List<Integer> status, String userId);
+    ServerResponse getActivityByStatusAndVoter(List<Integer> status, String userId,String sortField);
 
-    ServerResponse getOwnActivity(User user);
+    ServerResponse getActivityByStatusAndVoterAndCategory(List<Integer> status, String userId,int category,String sortField);
 
-    ServerResponse getAvailableActivity(User user);
+    ServerResponse getOwnActivity(User user,String sortField);
+
+    ServerResponse getOwnActivityByCategory(User user,Integer category,String sortField);
+
+    ServerResponse getAvailableActivity(User user,String sortField);
+
+    ServerResponse getAvailableCategoryActivity(User user,Integer category,String sortField);
 
     ServerResponse getActivityById(String id);
+
+    ServerResponse deleteActivityById(User user,String id);
 
     ServerResponse voteOnActivity(String userId,String activityId);
 }
