@@ -78,7 +78,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     public ServerResponse getActivityByStatusAndVoterAndCategory(List<Integer> status, String userId,int category,String sortField){
         Pageable pageable = new PageRequest(0,10, Sort.Direction.DESC,sortField);
-        List<ActivityItem> activityItems = activityItemRepository.findAllStatusCategoryActivities(status,userId,category,pageable);
+        List<ActivityItem> activityItems = activityItemRepository.findAllStatusCategoryActivities(userId,status,category,pageable);
         if (activityItems!=null){
             this.checkAndSetActivityStatus(activityItems);
             return ServerResponse.createBySuccess(activityItems);
@@ -98,7 +98,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     public ServerResponse getOwnActivityByCategory(User user,Integer category,String sortField){
         Pageable pageable = new PageRequest(0,10, Sort.Direction.DESC,sortField);
-        List<ActivityItem> activityItems = activityItemRepository.findActivitiesOwnerUserIdAndCategory(category,user.getSubOpenId(),pageable);
+        List<ActivityItem> activityItems = activityItemRepository.findActivitiesOwnerUserIdAndCategory(user.getSubOpenId(),category,pageable);
         if (activityItems!=null){
             this.checkAndSetActivityStatus(activityItems);
             return ServerResponse.createBySuccess(activityItems);

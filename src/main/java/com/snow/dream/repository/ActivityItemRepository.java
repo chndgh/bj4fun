@@ -15,19 +15,19 @@ import java.util.List;
 @Repository
 public interface ActivityItemRepository extends MongoRepository<ActivityItem,Integer> {
 
-    @Query("{'ownerUser._id':?0}")
+    @Query("{'ownerUser._id':{$eq:?0}}")
     List<ActivityItem> findByOwnerUserId(String ownerUserId,Pageable pageable);
 
-    @Query("{'category':?0,'ownerUser._id':?1}")
-    List<ActivityItem> findActivitiesOwnerUserIdAndCategory(Integer category, String ownerUserId,Pageable pageable);
+    @Query("{'ownerUser._id':{$eq:?0},'category':?1}")
+    List<ActivityItem> findActivitiesOwnerUserIdAndCategory(String ownerUserId,Integer category, Pageable pageable);
 
     ActivityItem findById(String id);
 
     @Query("{'status':{$in:?0},'voters._id':?1}")
     List<ActivityItem> findByStatusInAndVoters(List<Integer> status, String userId,Pageable pageable);
 
-    @Query("{'status':{$in:?0},'voters._id':?1,'category':?2}")
-    List<ActivityItem> findAllStatusCategoryActivities(List<Integer> status,String userId,int category,Pageable pageable);
+    @Query("{voters._id:{$eq:?0},'status':{$in:?1},'category':?2}")
+    List<ActivityItem> findAllStatusCategoryActivities(String userId,List<Integer> status,int category,Pageable pageable);
 
     @Query("{'ownerUser._id':{$ne:?0},'voters._id':{$ne:?0},'isOpen':1,'status':{$in:?1}}")
     List<ActivityItem> findAvailableActivities(String userId,List<Integer> status,Pageable pageable);
